@@ -1,23 +1,24 @@
-# Flutter app in Zapp!
+Обзор приложения
+Это Flutter приложение демонстрирует различные базовые виджеты и возможности Flutter через интерактивный пример:
 
-A new Flutter project built with Zapp!
+Особенности:
+Интерактивный счетчик с функцией увеличения/уменьшения
 
-----
+Material 3 дизайн с поддержкой светлой и темной темы
 
-> To learn how to use Zapp! check out the [documentation](https://docs.zapp.run)
+Демонстрация различных виджетов: Container, Row, Column, Text
 
-----
+Визуальные примеры концепций компоновки Flutter
 
-## Getting Started
+Демонстрируемые виджеты:
+Container с пользовательскими декорациями, границами и фоном
 
-This project is a starting point for a Flutter application.
+Row с равномерно распределенными элементами иконок
 
-A few resources to get you started if this is your first Flutter project:
+Column с вложенными контейнерами и эффектами теней
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Text виджеты с различными вариантами стилей и типографикой
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Интерактивные кнопки с визуальной обратной связью
 
+Прокручиваемый контент с использованием SingleChildScrollView

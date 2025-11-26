@@ -54,6 +54,14 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar( items:
+      [
+        BottomNavigationBarItem(label:"a", icon:Icon(Icons.add)),
+        BottomNavigationBarItem(label:'b',icon:Icon(Icons.add)),
+        BottomNavigationBarItem(label:'c',icon:Icon(Icons.add)),
+      ]
+      
+           ),
       appBar: AppBar(
         title: Text(widget.title),
       ),
