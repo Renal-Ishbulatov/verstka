@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter App!!',
+      title: 'Flutter Лабораторная - Полная версия',
       theme: ThemeData(
         colorSchemeSeed: Colors.indigo,
         useMaterial3: true,
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         brightness: Brightness.dark,
       ),
-      home: const MyHomePage(title: 'Flutter Example App'),
+      home: const MyHomePage(title: 'Flutter Lab - Все элементы'),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -37,333 +37,302 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
+  int _pressCount = 0;
+  
+  // Обработчик для FloatingActionButton
+  void _onFabPressed() {
+    print('FloatingActionButton pressed!');
+    print('Кнопка была нажата $_pressCount раз');
+    print('Текущее время: ${DateTime.now().toString()}');
+    
     setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      if (_counter > 0) _counter--;
+      _pressCount++;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar( items:
-      [
-        BottomNavigationBarItem(label:"a", icon:Icon(Icons.add)),
-        BottomNavigationBarItem(label:'b',icon:Icon(Icons.add)),
-        BottomNavigationBarItem(label:'c',icon:Icon(Icons.add)),
-      ]
-      
-           ),
       appBar: AppBar(
         title: Text(widget.title),
+        backgroundColor: Colors.indigo,
+        foregroundColor: Colors.white,
       ),
+      
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            // Пример Container с decoration
+          children: [
+            // Первый Container
             Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(16.0),
-              margin: const EdgeInsets.only(bottom: 16.0),
-              decoration: BoxDecoration(
-                color: Colors.indigo.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(12.0),
-                border: Border.all(color: Colors.indigo, width: 1.0),
-              ),
-              child: Column(
-                children: [
-                  // Пример Text с разными стилями
-                  Text(
-                    'Базовые виджеты Flutter',
-                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                          color: Colors.indigo,
-                          fontWeight: FontWeight.bold,
-                        ),
-                    textAlign: TextAlign.center,
+              width: 320,
+              height: 120,
+              color: Colors.indigo[400],
+              margin: const EdgeInsets.all(20),
+              child: const Center(
+                child: Text(
+                  'Container 1 (базовый)',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
                   ),
-                  const SizedBox(height: 8.0),
-                ],
+                ),
               ),
             ),
-
-            // Пример Row с несколькими элементами
+            
+            // Row с тремя Text
             Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(16.0),
-              margin: const EdgeInsets.only(bottom: 16.0),
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(8.0),
+                color: Colors.indigo[50],
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.indigo[100], width: 2),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    'Пример Row:',
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                    'Элемент 1',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.indigo[900],
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                  const SizedBox(height: 8.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      // Несколько Container'ов в Row
-                      Container(
-                        width: 60,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          color: Colors.red[100],
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: const Icon(Icons.star, color: Colors.red),
-                      ),
-                      Container(
-                        width: 60,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          color: Colors.green[100],
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: const Icon(Icons.favorite, color: Colors.green),
-                      ),
-                      Container(
-                        width: 60,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          color: Colors.blue[100],
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: const Icon(Icons.thumb_up, color: Colors.blue),
-                      ),
-                    ],
+                  Text(
+                    'Элемент 2',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.indigo[900],
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Text(
+                    'Элемент 3',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.indigo[900],
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ],
               ),
             ),
-
-            // Пример вложенных Column
+            
+            // Expanded с Row и CircleAvatar
             Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(16.0),
-              margin: const EdgeInsets.only(bottom: 16.0),
-              decoration: BoxDecoration(
-                color: Colors.orange[50],
-                borderRadius: BorderRadius.circular(8.0),
+              margin: const EdgeInsets.all(20),
+              child: const Text(
+                'Продвинутая часть: Expanded, Row и CircleAvatar',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.indigo,
+                ),
+                textAlign: TextAlign.center,
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Пример Column:',
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
-                  ),
-                  const SizedBox(height: 8.0),
-                  Column(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(12.0),
-                        margin: const EdgeInsets.only(bottom: 8.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(6.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              blurRadius: 2.0,
-                              offset: const Offset(0, 1),
-                            ),
-                          ],
-                        ),
-                        child: Row(
+            ),
+            
+            // Expanded виджет
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.grey[100],
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.3),
+                      blurRadius: 8,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Row с двумя CircleAvatar внутри Expanded',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    
+                    const SizedBox(height: 20),
+                    
+                    // Row с двумя CircleAvatar
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        // Первый CircleAvatar с фиксированным radius
+                        Column(
                           children: [
-                            const Icon(Icons.info, color: Colors.orange),
-                            const SizedBox(width: 8.0),
-                            Expanded(
-                              child: Text(
-                                'Это элемент в Column',
-                                style: Theme.of(context).textTheme.bodyMedium,
+                            CircleAvatar(
+                              radius: 45,  // разный radius
+                              backgroundColor: Colors.blue[100],
+                              child: const Icon(
+                                Icons.person,
+                                size: 50,
+                                color: Colors.blue,
                               ),
                             ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(12.0),
-                        margin: const EdgeInsets.only(bottom: 8.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(6.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              blurRadius: 2.0,
-                              offset: const Offset(0, 1),
+                            const SizedBox(height: 8),
+                            const Text(
+                              'Radius: 45',
+                              style: TextStyle(fontSize: 14),
                             ),
                           ],
                         ),
-                        child: Row(
+                        
+                        // Второй CircleAvatar с изображением из сети
+                        Column(
                           children: [
-                            const Icon(Icons.check_circle, color: Colors.green),
-                            const SizedBox(width: 8.0),
-                            Expanded(
-                              child: Text(
-                                'Еще один элемент',
-                                style: Theme.of(context).textTheme.bodyMedium,
+                            CircleAvatar(
+                              radius: 60,  // другой radius
+                              backgroundImage: NetworkImage(
+                                'https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=400&h=400&fit=crop'
+                              ),
+                              // Fallback child если изображение не загрузится
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[300],
+                                  shape: BoxShape.circle,
+                                ),
+                                child: const Icon(
+                                  Icons.image,
+                                  size: 40,
+                                  color: Colors.grey,
+                                ),
                               ),
                             ),
+                            const SizedBox(height: 8),
+                            const Text(
+                              'Radius: 60\n(Network Image)',
+                              style: TextStyle(fontSize: 14),
+                              textAlign: TextAlign.center,
+                            ),
                           ],
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-
-            // Оригинальный счетчик с улучшениями
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(16.0),
-              margin: const EdgeInsets.only(bottom: 16.0),
-              decoration: BoxDecoration(
-                color: Colors.purple[50],
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'Счетчик:',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.purple,
-                        ),
-                  ),
-                  const SizedBox(height: 16.0),
-                  Container(
-                    padding: const EdgeInsets.all(20.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.purple.withOpacity(0.3),
-                          blurRadius: 8.0,
-                          offset: const Offset(0, 2),
+                        
+                        // Третий CircleAvatar для демонстрации
+                        Column(
+                          children: [
+                            CircleAvatar(
+                              radius: 35,  // третий radius
+                              backgroundColor: Colors.purple[100],
+                              child: const Text(
+                                'AB',
+                                style: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.purple,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            const Text(
+                              'Radius: 35',
+                              style: TextStyle(fontSize: 14),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                    child: Text(
-                      '$_counter',
-                      style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                            color: Colors.purple,
-                            fontWeight: FontWeight.bold,
+                    
+                    const SizedBox(height: 20),
+                    
+                    // Информация о нажатиях FAB
+                    Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: Colors.indigo[50],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Column(
+                        children: [
+                          const Icon(
+                            Icons.info,
+                            color: Colors.indigo,
+                            size: 24,
                           ),
+                          const SizedBox(height: 8),
+                          Text(
+                            'FAB нажат: $_pressCount раз',
+                            style: const TextStyle(
+                              color: Colors.indigo,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          const Text(
+                            'Смотрите вывод в консоли',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 16.0),
-                  Text(
-                    'Вы нажали на кнопку столько раз:',
-                    style: Theme.of(context).textTheme.bodyMedium,
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 16.0),
-                  // Row с кнопками управления счетчиком
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.red[100],
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: IconButton(
-                          onPressed: _decrementCounter,
-                          icon: const Icon(Icons.remove, color: Colors.red),
-                          tooltip: 'Уменьшить',
-                        ),
-                      ),
-                      const SizedBox(width: 20.0),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.green[100],
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: IconButton(
-                          onPressed: _incrementCounter,
-                          icon: const Icon(Icons.add, color: Colors.green),
-                          tooltip: 'Увеличить',
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-
-            // Дополнительный пример Text с разными стилями
+            
+            // Второй Container
             Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(16.0),
-              decoration: BoxDecoration(
-                color: Colors.grey[50],
-                borderRadius: BorderRadius.circular(8.0),
+              width: 280,
+              height: 130,
+              color: Colors.green[600],
+              margin: const EdgeInsets.all(20),
+              child: const Center(
+                child: Text(
+                  'Container 2 (базовый)',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            ),
+            
+            // Дополнительный информационный блок
+            Container(
+              margin: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                color: Colors.amber[50],
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.amber[200]),
+              ),
+              child: const Column(
                 children: [
-                  Text(
-                    'Примеры Text виджетов:',
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                  Icon(
+                    Icons.check_circle,
+                    color: Colors.green,
+                    size: 36,
                   ),
-                  const SizedBox(height: 12.0),
-                  const Text('Обычный текст'),
-                  const SizedBox(height: 8.0),
+                  SizedBox(height: 10),
                   Text(
-                    'Жирный текст',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                    'Лабораторная работа выполнена!',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: 8.0),
+                  SizedBox(height: 8),
                   Text(
-                    'Цветной текст',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: Colors.blue,
-                        ),
-                  ),
-                  const SizedBox(height: 8.0),
-                  Text(
-                    'Большой текст',
-                    style: Theme.of(context).textTheme.headlineSmall,
-                  ),
-                  const SizedBox(height: 8.0),
-                  Text(
-                    'Текст с тенью',
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          shadows: [
-                            Shadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              blurRadius: 2.0,
-                              offset: const Offset(1, 1),
-                            ),
-                          ],
-                        ),
+                    '✓ Базовая верстка\n✓ FloatingActionButton\n✓ Expanded с CircleAvatar\n✓ Network Image',
+                    style: TextStyle(fontSize: 14),
+                    textAlign: TextAlign.center,
                   ),
                 ],
               ),
@@ -371,11 +340,32 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+
+      // FloatingActionButton
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        onPressed: _onFabPressed,
+        tooltip: 'Нажмите для вывода в консоль',
+        backgroundColor: Colors.indigo,
+        foregroundColor: Colors.white,
+        elevation: 8,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.touch_app),
+            if (_pressCount > 0)
+              Text(
+                '$_pressCount',
+                style: const TextStyle(fontSize: 12),
+              ),
+          ],
+        ),
       ),
+      
+      // Расположение FAB
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
